@@ -1,0 +1,71 @@
+Assembleur
+
++-------------------------------------+
+¦ appel de fonctions / retour         ¦
++-------------------------------------+
+* CALL Nom_Fonction
+appel la fonction Nom_Fonction
+
+* RET	
+termine la fonction en cours et retourne à l'appelant
+
++-------------------------------------+
+¦ gestion de la pile                  ¦
++-------------------------------------+
+* PUSH 
+Place une variable ou une valeur sur la pile
+* DROP  (0:variable/valeur)
+Supprime le haut de la pile
+* EVAL	(0:variable/valeur)
+Converti la variable en valeur
+ou
+Converti la valeur tableau en valeur représentant la taille du tableau
+
++-------------------------------------+
+¦ gestion des sauts                   ¦
++-------------------------------------+
+*JUMP Nom_Label
+saut inconditionnel vers Nom_Label
+
+*BJUMP Nom_Label (0:variable/valeur)
+saut conditionnel vers Nom_Label si la première valeur de la pile est VRAI
+
++-------------------------------------+
+¦ opérateurs                          ¦
++-------------------------------------+
+*OP xxx (0..n:variable/valeur)
+applique l'opérateur xxx aux premiers niveaux de la pile
+(1 pour les unaires, 2 pour les binaires)
+
+*ARRAY (0:variable/valeur - 1..n:variable/valeur)
+convertis les éléments de la pile en tableau
+le premier niveau indique le nombre d'éléments N dans le tableau
+les N suivants sont les éléments
+Si n=0, on crée un tableau vide
+
+*EXTRACT (0:variable/valeur - 1:variable/valeur)
+extrait un élément d'un tableau et le place sur la pile
+le premier niveau correspond à l'indice à extraire,
+le deuxième niveau contient le tableau
+
++-------------------------------------+
+¦ gestion de la mémoire               ¦
++-------------------------------------+
+*STO	(0:variable - 1:variable/valeur)
+sauvegarde une valeur dans une variable
+premier niveau le nom de la variable
+deuxième niveau la valeur
+Si une variable globale existe avec ce nom, STO=STOG
+
+*STOG	(0:variable - 1:variable/valeur)
+sauvegarde une valeur dans une variable globale
+premier niveau le nom de la variable
+deuxième niveau la valeur
+
+*STOR	(0:variable/valeur)
+sauvegarde une valeur dans la variable de retour d'une fonction
+premier niveau la valeur
+
+
+
+
